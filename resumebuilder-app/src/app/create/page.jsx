@@ -50,41 +50,7 @@ const MultiStepForm = () => {
 
   
   };
-  async function sendToServer(formData){
-    try{
-      setIsLoading(true);
-      const { personal, education, experiences, projects, skills, certificates } = formData;
-      const response = await fetch("http://localhost:3000/api/resume",
-        {
-          method:'POST',
-          headers:{
-            'content-Type':'application/json'
-          },
-          body: JSON.stringify({
-            personal,
-            education,
-            experiences,
-            projects,
-            skills,
-            certificates
-          })
-        }
-      );
-      if(!response.ok){
-        const errData = await response.text();
-        throw new Error(errorData || "Data invalid")
-      }
-      const data = await response.json();
-      console.log("Successfully sent data to server",data)
-      setSubmitError("")
-    }
-    catch(error){
-      setSubmitError(error.message || "Something went wrong")
-    }
-    finally{
-      setIsLoading(false);
-    }
-  } 
+
 
   useEffect(()=>{
     localStorage.setItem('resumeDetails',JSON.stringify(formData))
@@ -114,3 +80,7 @@ const MultiStepForm = () => {
 }
 
 export default MultiStepForm
+
+//create another step for career objective
+//another step for selecting template
+//make sure to delete localstorage resume details if user clicks create resume button again but be4 that give user a warning
