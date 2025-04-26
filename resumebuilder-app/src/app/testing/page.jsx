@@ -6,6 +6,7 @@ import Certification from "../components/form/Certification"
 import FinalStep from "../components/form/FinalStep";
 import Projects from "../components/form/Projects";
 import RootLayout from "../components/Layout"
+import CareerObjective from "../components/form/CareerObjective";
 
 
 
@@ -31,7 +32,7 @@ const page = () => {
     <div>
       <div className="max-w-lg mx-auto p-6 border rounded-lg shadow-lg bg-white">
         <p className="mb-4 text-center">Step {step} of 3</p>
-      {step === 1 && (<Projects formData={formData} setFormData={setFormData} nextStep={nextStep}/>)}
+      {step === 1 && (<CareerObjective formData={formData} setFormData={setFormData} nextStep={nextStep}/>)}
       {step ===2 && (<FinalStep prevStep={prevStep} onFinalSubmit={onFinalSubmit}/>)}
       </div>   
     </div>

@@ -8,6 +8,7 @@ import Projects from "../components/form/Projects"
 import FinalStep from "../components/form/FinalStep"
 import Skills from "../components/form/Skills"
 import Certification from "../components/form/Certification"
+import CareerObjective from "../components/form/CareerObjective";
 
 const MultiStepForm = () => {
   const[isLoading,setIsLoading] = useState(false);
@@ -34,6 +35,7 @@ const MultiStepForm = () => {
   projects: [],
   skills: [],
   certificates: [],
+  career_objective : "",
 
 
   });
@@ -71,7 +73,9 @@ const MultiStepForm = () => {
           {step === 4 && (<Projects formData={formData} setFormData={setFormData} prevStep={prevStep} nextStep={nextStep}/>)}
           {step === 5 && (<Skills formData={formData}  setFormData={setFormData} prevStep={prevStep} nextStep={nextStep} />)}
           {step === 6 && (<Certification formData={formData}  setFormData={setFormData} prevStep={prevStep} nextStep={nextStep} />)}
-          {step ===7 && (<FinalStep prevStep={prevStep} onFinalSubmit={onFinalSubmit} formData={formData} isLoading={isLoading} submitError={submitError}/>)}
+          {step === 7 && (<CareerObjective formData={formData}  setFormData={setFormData} prevStep={prevStep} nextStep={nextStep} />)}
+          
+          {step ===8 && (<FinalStep prevStep={prevStep} onFinalSubmit={onFinalSubmit} formData={formData} isLoading={isLoading} submitError={submitError}/>)}
           </div>
         </div>
       
