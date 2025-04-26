@@ -38,8 +38,9 @@ const Certification = ({ formData, setFormData, prevStep, nextStep }) => {
 
     const [certificateCount, setCertificateCount] = useState(0)
     const [showCertificateForm, setShowCertificateForm] = useState(false);
-    const [isYes, setIsYes] = useState(null);
+    
     const [showFinalForm, setShowFinalForm] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("");
     const form = useForm({
         resolver: zodResolver(createCertificationSchema(certificateCount)),
         defaultValues:{ 
@@ -50,11 +51,17 @@ const Certification = ({ formData, setFormData, prevStep, nextStep }) => {
     // Add State to Track the Choice:
     // Use React’s useState to keep track of whether they picked "Yes" or "No"
 
-    const handleFormShown = (e) => {
-        e.preventDefault();
-        setShowCertificateForm(isYes);
-
-    };
+     const handleFormShown = (e) => {
+       e.preventDefault();
+       if(selectedOption == "true"){
+        setShowCertificateForm(true);
+       } else{
+           nextStep();
+       }
+   
+   
+   };
+     
 
     const handleCertificateCount = (e) => {
         e.preventDefault();
@@ -88,7 +95,7 @@ const Certification = ({ formData, setFormData, prevStep, nextStep }) => {
     return (
         <div className="p-4 space-y-4">
             <h3 className="wizard-title">Certificates</h3>
-            {!showCertificateForm ? (<DoYouHaveAnyCertificates handleFormShown={handleFormShown} setIsYes={setIsYes}/>
+            {!showCertificateForm ? (<DoYouHaveAnyCertificates handleFormShown={handleFormShown} nextStep={nextStep} setShowCertificateForm={setShowCertificateForm} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
             ) : (
                 !showFinalForm ? (<FinalFormCheck handleCertificateCount={handleCertificateCount}  />) : (<AllCertificatesForm form={form} onSubmit={onSubmit} certificateCount={certificateCount} /> ))
     }

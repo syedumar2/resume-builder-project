@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle } from "lucide-react"
 
-const FinalStep = ({ onFinalSubmit, prevStep, formData, isLoading, submitError }) => {
+const  FinalStep = ({ onFinalSubmit, prevStep, formData, isLoading, submitError }) => {
   return (
     <div className="space-y-6">
       <h3 className="wizard-title text-xl font-semibold">Final Preview of Details:</h3>
@@ -95,7 +95,7 @@ const FinalStep = ({ onFinalSubmit, prevStep, formData, isLoading, submitError }
             Prev Step
           </Button>
           <Button className="buttons-color" onClick={onFinalSubmit}>
-            {isLoading ? "Sending..." : " Send to Server"}
+            {isLoading ? "Sending..." : " Next"}
           </Button>
         </div>
         <div>{submitError &&  <Alert variant="destructive">

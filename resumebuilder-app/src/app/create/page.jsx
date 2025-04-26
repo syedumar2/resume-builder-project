@@ -9,8 +9,10 @@ import FinalStep from "../components/form/FinalStep"
 import Skills from "../components/form/Skills"
 import Certification from "../components/form/Certification"
 import CareerObjective from "../components/form/CareerObjective";
+import { useRouter } from "next/navigation";
 
 const MultiStepForm = () => {
+  const router = useRouter();
   const[isLoading,setIsLoading] = useState(false);
   const [submitError,setSubmitError] = useState("")
   const [step, setStep] = useState(1); // Start at step 1
@@ -46,8 +48,10 @@ const MultiStepForm = () => {
   const onFinalSubmit  = () => {
     console.log("Submitting...");
     console.log("Final form data:", formData);
-    sendToServer(formData);
+    
     alert("Form Submitted!! Check console.");
+    router.push("/template")
+    
   
 
   
