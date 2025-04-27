@@ -138,3 +138,9 @@ body {
 .wizard-title{
   @apply font-bold text-center tracking-wider text-xl 
 }
+.imageHeight{
+  @apply h-72 w-auto object-contain 
+}
+.template-display{
+  @apply flex flex-col items-center justify-center gap-3  bg-gray-700 py-4 rounded-2xl
+}
