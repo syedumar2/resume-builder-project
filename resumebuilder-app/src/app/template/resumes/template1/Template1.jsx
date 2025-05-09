@@ -7,6 +7,7 @@ const Template1 = ({ data }) => {
   const projects = data.projects;
   const skills = data.skills;
   const experience = data.experiences;
+  const certificates = data.certificates;
   function formatDescriptionWithBulletPoints(text) {
     const parts = text.split(".").filter(Boolean);
     return `<ul>${parts
@@ -28,12 +29,20 @@ const Template1 = ({ data }) => {
             <span className="first-name">{f_name}</span>
             <span className="last-name">{l_name}</span>
           </div>
-          <div className="contact-info">
+          <div className="contact-info !mt-3">
             <span className="email">Email: </span>
             <span className="email-val">{data.personal.email}</span>
             <span className="separator"></span>
             <span className="phone">Phone: </span>
             <span className="phone-val">{data.personal.phone}</span>
+            <span className="separator"></span>
+           
+            <span className="phone-val"><a href={data.personal.linkedIn} target="_blank" rel="noopener noreferrer">
+  LinkedIn
+</a></span>
+            <span className="separator"></span>
+            <span className="phone">Location:  </span>
+            <span className="phone-val">{data.personal.location}</span>
           </div>
 
           <div className="about">
@@ -77,7 +86,7 @@ const Template1 = ({ data }) => {
                 </div>
                 <div className="right">
                   <div className="name">
-                    Anticipated Completion in: **insertDate**
+                    Anticipated Completion in {data.education.degreePassYear}
                   </div>
                   <div className="desc">
                     Bidar, Karnataka **need to insert in form**
@@ -89,11 +98,12 @@ const Template1 = ({ data }) => {
                   <div className="name">Pre University College</div>
                   <div className="addr">{data.education.pucSchool}</div>
                   <div className="duration">
+                  Board: {data.education.pucBoard} <br/>
                     Score: {data.education.pucPercentage} %
                   </div>
                 </div>
                 <div className="right">
-                  <div className="name">Completed in date</div>
+                  <div className="name">Completed in {data.education.pucPassYear}</div>
                   <div className="desc">Location, somewhere</div>
                 </div>
               </div>
@@ -102,12 +112,13 @@ const Template1 = ({ data }) => {
                   <div className="name">10th Class</div>
                   <div className="addr">{data.education.tenthSchool}</div>
                   <div className="duration">
+                    Board: {data.education.tenthBoard} <br/>
                     CGPA: {data.education.tenthPercentage}
                   </div>
                 </div>
                 <div className="right">
                   <div className="name">
-                    Anticipated Completion in: **insertDate**
+                    Completed in: {data.education.tenthPassYear}
                   </div>
                   <div className="desc">
                     Bidar, Karnataka **need to insert in form**
@@ -120,9 +131,9 @@ const Template1 = ({ data }) => {
             <div className="section__title">Projects</div>
             <div className="section__list">
               {projects.map((ele, index) => {
-                return (
+                return (  
                   <div key={index} className="section__list-item">
-                    <div className="name">{ele.projectName}</div>
+                    <div className="name flex justify-between items-center">{ele.projectName}<p > {ele.month} {ele.year} </p></div> 
                     <div
                       className="text"
                       dangerouslySetInnerHTML={{
@@ -131,6 +142,7 @@ const Template1 = ({ data }) => {
                         ),
                       }}
                     ></div>
+                    
                   </div>
                 );
               })}
@@ -156,9 +168,15 @@ const Template1 = ({ data }) => {
             </div>
           </div>
           <div className="section">
-            <div className="section__title">Interests</div>
+            <div className="section__title">Certifications</div>
             <div className="section__list">
-              <div className="section__list-item">Football, programming.</div>
+            {certificates.map((ele, index) => {
+                return (  
+                  <div key={index} className="mb-1">
+                    <div className="name flex justify-between items-center">{ele.name}</div> 
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
